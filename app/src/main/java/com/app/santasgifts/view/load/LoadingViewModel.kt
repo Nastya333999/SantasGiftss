@@ -27,7 +27,7 @@ class LoadingViewModel @Inject constructor(
 
             val url = repository.getUrl()
 
-            if (url.isNullOrEmpty()) {
+            if (!url.isNullOrEmpty()) {
                 _data.postValue(url)
             } else {
                 val apps = gAF(activity)

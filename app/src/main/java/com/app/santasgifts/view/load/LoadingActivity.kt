@@ -28,7 +28,7 @@ class LoadingActivity : AppCompatActivity() {
         viewModel.innn(this)
 
         viewModel._data.observe(this) { url ->
-            if (url.isEmpty())
+            if (url.isNullOrEmpty())
                 return@observe
 
             val intent = Intent(this, WvActivity::class.java)

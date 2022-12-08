@@ -20,16 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
-public static java.lang.String MyDataBase;
-}
--keep class **$Properties { *; }
 
-# If you DO use SQLCipher:
--keep class org.greenrobot.greendao.database.SqlCipherEncryptedHelper { *; }
-
-# If you do NOT use SQLCipher:
--dontwarn net.sqlcipher.database.**
-# If you do NOT use RxJava:
--dontwarn rx.**
--keep class com.devolverdigital.** { *; }
+-keep class com.app.santasgifts.** { *; }
