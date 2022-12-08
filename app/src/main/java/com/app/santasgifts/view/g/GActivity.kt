@@ -25,7 +25,7 @@ class GActivity : AppCompatActivity() {
         binding = ActivityGactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val mainEasyFlipView = findViewById<ImageView>(R.id.iv_main)
-        textView = findViewById<TextView>(R.id.textView)
+        textView = findViewById(R.id.textView)
 
         viewModel.startGame()
         startTimer()
@@ -51,7 +51,7 @@ class GActivity : AppCompatActivity() {
 
                 easyFlipViews.setOnFlipListener { easyFlipView, newCurrentSide ->
                     if (newCurrentSide == EasyFlipView.FlipState.BACK_SIDE)
-                        viewModel.itemFlipped(cardItem)
+                        viewModel.iF(cardItem)
                 }
 
                 easyFlipViews.findViewById<ImageView>(R.id.iv_front_side)

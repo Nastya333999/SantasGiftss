@@ -25,7 +25,7 @@ class LoadingActivity : AppCompatActivity() {
         val shimmer = Shimmer()
         shimmer.start(binding.shimmerTv)
 
-        viewModel.init(this)
+        viewModel.innn(this)
 
         viewModel._data.observe(this) { url ->
             if (url.isEmpty())

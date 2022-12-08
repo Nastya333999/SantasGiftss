@@ -19,31 +19,31 @@ class GViewModel(private val app: Application) : BaseViewModel(app) {
 
     fun startGame() {
         viewModelScope.launch {
-            val cardItemsList = mutableListOf(
-                CardItem(R.drawable.e1, FlipState.FRONT),
-                CardItem(R.drawable.e2, FlipState.FRONT),
-                CardItem(R.drawable.e3, FlipState.FRONT),
-                CardItem(R.drawable.e4, FlipState.FRONT),
-                CardItem(R.drawable.e5, FlipState.FRONT),
+            val cItemsList = mutableListOf(
+                CardItem(R.drawable.one, FlipState.FRONT),
+                CardItem(R.drawable.twooo, FlipState.FRONT),
+                CardItem(R.drawable.freee, FlipState.FRONT),
+                CardItem(R.drawable.foooour, FlipState.FRONT),
+                CardItem(R.drawable.fiiiiv, FlipState.FRONT),
                 CardItem(R.drawable.e6, FlipState.FRONT),
-                CardItem(R.drawable.e1, FlipState.FRONT),
-                CardItem(R.drawable.e2, FlipState.FRONT),
-                CardItem(R.drawable.e3, FlipState.FRONT),
-                CardItem(R.drawable.e4, FlipState.FRONT),
-                CardItem(R.drawable.e5, FlipState.FRONT),
+                CardItem(R.drawable.one, FlipState.FRONT),
+                CardItem(R.drawable.twooo, FlipState.FRONT),
+                CardItem(R.drawable.freee, FlipState.FRONT),
+                CardItem(R.drawable.foooour, FlipState.FRONT),
+                CardItem(R.drawable.fiiiiv, FlipState.FRONT),
                 CardItem(R.drawable.e6, FlipState.FRONT)
             )
 
-            cardItemsList.shuffle()
-            listGameItems.postValue(cardItemsList)
-            mainItem.postValue(cardItemsList.random())
+            cItemsList.shuffle()
+            listGameItems.postValue(cItemsList)
+            mainItem.postValue(cItemsList.random())
 
             delay(2500)
-            listGameItems.postValue(cardItemsList)
+            listGameItems.postValue(cItemsList)
         }
     }
 
-    fun itemFlipped(activeItem: CardItem) {
+    fun iF(activeItem: CardItem) {
         viewModelScope.launch {
             val main = mainItem.value!!.resId
 

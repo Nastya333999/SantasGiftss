@@ -10,7 +10,7 @@
         android:layout_height="80dp"
         android:id="@+id/iv_front_side"
         android:scaleType="centerCrop"
-        android:src="@drawable/e1"/>
+        android:src="@drawable/one"/>
 
 
 </androidx.cardview.widget.CardView>

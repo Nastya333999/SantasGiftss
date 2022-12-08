@@ -4,14 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
-import com.app.santasgifts.ItemUrl
-import com.app.santasgifts.ItemUrlDao
 import com.app.santasgifts.databinding.ActivityMainBinding
-import com.app.santasgifts.view.Wv.WvActivity
 import com.app.santasgifts.view.g.GActivity
 import com.app.santasgifts.view.load.LoadingActivity
 import com.app.santasgifts.workman.WM

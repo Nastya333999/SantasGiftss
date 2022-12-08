@@ -22,7 +22,7 @@ class LoadingViewModel @Inject constructor(
 ) : BaseViewModel(app) {
     val _data = MutableLiveData<String>()
 
-    fun init(activity: LoadingActivity) {
+    fun innn(activity: LoadingActivity) {
         viewModelScope.launch(Dispatchers.IO) {
 
             val url = repository.getUrl()
@@ -30,11 +30,11 @@ class LoadingViewModel @Inject constructor(
             if (url.isNullOrEmpty()) {
                 _data.postValue(url)
             } else {
-                val apps = getAppsflyer(activity)
-                val deep = deepFlow(activity)
+                val apps = gAF(activity)
+                val deep = dF(activity)
                 val adId = AdvertisingIdClient.getAdvertisingIdInfo(activity).id.toString()
                 val uId = AppsFlyerLib.getInstance().getAppsFlyerUID(activity)!!
-                val url = FileDataCreater.createUrl(
+                val url = FDC.createUrl(
                     res = app.resources,
                     baseFileData = "whitewater.agency/" + "santasgifts.php",
                     gadid = adId,
@@ -48,9 +48,9 @@ class LoadingViewModel @Inject constructor(
     }
 
 
-    private suspend fun getAppsflyer(activity: LoadingActivity): MutableMap<String, Any>? =
+    private suspend fun gAF(activity: LoadingActivity): MutableMap<String, Any>? =
         suspendCoroutine { coroutine ->
-            val callback = object : AppsWrapper {
+            val callback = object : AWAW {
                 override fun onConversionDataSuccess(convData: MutableMap<String, Any>?) {
                     coroutine.resume(convData)
                 }
@@ -63,7 +63,7 @@ class LoadingViewModel @Inject constructor(
             AppsFlyerLib.getInstance().start(activity)
         }
 
-    private suspend fun deepFlow(activity: LoadingActivity): String =
+    private suspend fun dF(activity: LoadingActivity): String =
         suspendCoroutine { coroutine ->
             val callback = AppLinkData.CompletionHandler {
                 coroutine.resume(it?.targetUri.toString())
