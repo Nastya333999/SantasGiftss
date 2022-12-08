@@ -5,27 +5,31 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.santasgifts.*
+import com.app.santasgifts.data.Repository
 import com.appsflyer.AppsFlyerLib
 import com.facebook.applinks.AppLinkData
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class LoadingViewModel(private val app: Application) : BaseViewModel(app) {
+@HiltViewModel
+class LoadingViewModel @Inject constructor(
+    private val repository: Repository,
+    private val app: Application,
+) : BaseViewModel(app) {
     val _data = MutableLiveData<String>()
-
 
     fun init(activity: LoadingActivity) {
         viewModelScope.launch(Dispatchers.IO) {
 
-            val daoSession: DaoSession = (app as App).daoSession
-            val itemUrlDao = daoSession.itemUrlDao
-            val items = itemUrlDao.loadAll()
+            val url = repository.getUrl()
 
-            if (items.isNotEmpty()) {
-                _data.postValue(items.first().url)
+            if (url.isNullOrEmpty()) {
+                _data.postValue(url)
             } else {
 
                 val apps = getAppsflyer(activity)

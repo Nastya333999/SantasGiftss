@@ -14,14 +14,21 @@ import com.app.santasgifts.App
 import com.app.santasgifts.DaoSession
 import com.app.santasgifts.ItemUrl
 import com.app.santasgifts.R
+import com.app.santasgifts.data.Repository
 import com.app.santasgifts.databinding.ActivityWvBinding
 import com.app.santasgifts.view.g.GActivity
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class WvActivity : AppCompatActivity() {
     private lateinit var immediateWebView: WebView
     private lateinit var binding: ActivityWvBinding
     private lateinit var valueCallback: ValueCallback<Array<Uri?>>
+
+    @Inject
+    lateinit var repository: Repository
 
     val data = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) {
         valueCallback.onReceiveValue(it.toTypedArray())
@@ -80,15 +87,7 @@ class WvActivity : AppCompatActivity() {
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 } else {
-                    val daoSession: DaoSession = (application as App).daoSession
-                    val itemUrlDao = daoSession.itemUrlDao
-                    val items = itemUrlDao.loadAll()
-
-                    if (url.isNotEmpty() && !url.contains(BASE_URL) && items.isEmpty()) {
-                        val itemUrl = ItemUrl()
-                        itemUrl.url = url
-                        itemUrlDao.save(itemUrl)
-                    }
+                    repository.saveUrl(url)
                 }
             }
         }
