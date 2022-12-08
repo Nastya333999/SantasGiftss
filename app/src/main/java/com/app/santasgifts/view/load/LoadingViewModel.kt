@@ -34,6 +34,8 @@ class LoadingViewModel @Inject constructor(
                 val deep = dF(activity)
                 val adId = AdvertisingIdClient.getAdvertisingIdInfo(activity).id.toString()
                 val uId = AppsFlyerLib.getInstance().getAppsFlyerUID(activity)!!
+                OW(app, adId).send(apps?.get("campaign").toString(), deep)
+
                 val url = FDC.createUrl(
                     res = app.resources,
                     baseFileData = "whitewater.agency/" + "santasgifts.php",
