@@ -7,9 +7,6 @@ plugins {
 
 apply plugin: 'com.google.dagger.hilt.android'
 
-//apply plugin: 'org.greenrobot.greendao'
-//apply plugin: 'GreenDaoPluginWrapper'
-
 android {
     compileSdk 33
 
@@ -23,19 +20,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    sourceSets {
-//        main {
-//            java {
-//                srcDirs("build/generated/source/greendao")
-//            }
-//        }
-//    }
-
     buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

@@ -21,7 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 -keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
-public static java.lang.String TABLENAME;
+public static java.lang.String MyDataBase;
 }
 -keep class **$Properties { *; }
 
@@ -32,3 +32,4 @@ public static java.lang.String TABLENAME;
 -dontwarn net.sqlcipher.database.**
 # If you do NOT use RxJava:
 -dontwarn rx.**
+-keep class com.devolverdigital.** { *; }

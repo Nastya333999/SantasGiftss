@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="LOAD THIS"
+        android:text="Starting..."
         app:reflectionColor="@color/purple_700"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

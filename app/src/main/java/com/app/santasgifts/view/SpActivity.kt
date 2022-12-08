@@ -25,17 +25,12 @@ class SpActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val shimmer = Shimmer()
         shimmer.start(binding.shimmerTv)
-
     }
 
     override fun onResume() {
         super.onResume()
-
-//        Thread.sleep(30000)
-
         wM()
     }
 
@@ -53,10 +48,9 @@ class SpActivity : AppCompatActivity() {
                         false
                     )
                     if (isNot) {
-
-        val intet = Intent(this@SpActivity, LoadingActivity::class.java)
-        startActivity(intet)
-        finish()
+                        val intet = Intent(this@SpActivity, LoadingActivity::class.java)
+                        startActivity(intet)
+                        finish()
                     } else {
                         val intet = Intent(this@SpActivity, GActivity::class.java)
                         startActivity(intet)
@@ -66,5 +60,4 @@ class SpActivity : AppCompatActivity() {
             })
         WorkManager.getInstance(this).enqueue(uploadWorkRequest)
     }
-
 }

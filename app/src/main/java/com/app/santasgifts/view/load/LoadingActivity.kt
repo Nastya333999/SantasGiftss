@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.app.santasgifts.databinding.ActivityLoadingBinding
 import com.app.santasgifts.view.Wv.WvActivity
 import com.romainpiel.shimmer.Shimmer
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoadingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoadingBinding
     private val viewModel: LoadingViewModel by viewModels()
@@ -20,18 +21,20 @@ class LoadingActivity : AppCompatActivity() {
         binding = ActivityLoadingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val shimmer = Shimmer()
         shimmer.start(binding.shimmerTv)
 
         viewModel.init(this)
 
         viewModel._data.observe(this) { url ->
-            if (url.isEmpty()) return@observe
+            if (url.isEmpty())
+                return@observe
 
-            val intet = Intent(this@LoadingActivity, WvActivity::class.java)
-            intet.putExtra("web_url", url)
+            val intent = Intent(this, WvActivity::class.java)
+            intent.putExtra("web_url", url)
             Log.e("URL", "$url")
-            startActivity(intet)
+            startActivity(intent)
             finish()
         }
     }
